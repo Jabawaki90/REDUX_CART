@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 const Cart = (props) => {
   const myCart = useSelector((state) => state.cart.myCartList);
+  const totalPrice = myCart.map(item=>item.totalAmount).reduce((prev,next)=>prev + next,0)
   return (
     <Card className={classes.cart}>
       <h2>Your Shopping Cart</h2>
@@ -20,6 +21,7 @@ const Cart = (props) => {
           );
         })}
       </ul>
+      <h2>{`Total Amount : $ ${totalPrice} `}</h2>
     </Card>
   );
 };
